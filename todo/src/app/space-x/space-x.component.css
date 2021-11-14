@@ -1,0 +1,39 @@
+th {
+  font-size: medium;
+  color: white;
+}
+
+table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-item-row:not(.example-expanded-row):hover {
+  background: #9b9898;
+}
+
+tr.example-item-row:not(.example-expanded-row):active {
+  background: #cac9c9;
+}
+
+.example-item-row td {
+  border-bottom-width: 0;
+}
+
+.example-item-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-item-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-item-details {
+  padding: 16px;
+}

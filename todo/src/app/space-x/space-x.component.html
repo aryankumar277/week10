@@ -1,0 +1,36 @@
+<table mat-table
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td mat-cell *matCellDef="let item"> {{item[column]}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let item" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-item-detail"
+           [@detailExpand]="item == expandedItem ? 'expanded' : 'collapsed'">
+        <div class="example-item-destails">
+          <strong>Description</strong> : {{item.description}}
+          <br><br>
+          <strong>Website</strong> : {{item.website}}
+          <br><br>
+          <strong>Manufacturers</strong> : {{item.manufacturers}}
+          <br><br>
+          <strong>Payloads</strong> : {{item.payload_ids}}
+          <br><br>
+          <p *ngIf="item.twitter != null"><strong>Twitter</strong> : {{item.twitter}}</p>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let item; columns: columnsToDisplay;"
+      class="example-item-row"
+      [class.example-expanded-row]="expandedItem === item"
+      (click)="expandedItem = expandedItem === item ? null : item">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+

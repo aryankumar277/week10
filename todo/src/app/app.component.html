@@ -1,0 +1,19 @@
+<html>
+  <mat-toolbar color="primary">
+    <span>HttpClient and Routing Application</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+  <br>
+
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link *ngFor="let link of navLinks"
+    [routerLink]="link.link"
+    routerLinkActive #rla="routerLinkActive"
+    [active]="rla.isActive">
+      {{link.label}}
+    </a>
+  </nav>
+
+  <router-outlet></router-outlet>
+
+</html>
